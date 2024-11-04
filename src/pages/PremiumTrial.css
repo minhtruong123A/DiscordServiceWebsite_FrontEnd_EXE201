@@ -1,0 +1,18 @@
+.premium-trial {
+  width: 100%;
+  position: relative;
+  background-color: var(--color-darkslategray-100);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 46px;
+  line-height: normal;
+  letter-spacing: normal;
+}
+@media screen and (max-width: 975px) {
+  .premium-trial {
+    gap: var(--gap-4xl);
+  }
+}

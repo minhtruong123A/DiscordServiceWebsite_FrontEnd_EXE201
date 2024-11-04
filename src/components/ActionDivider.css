@@ -1,0 +1,43 @@
+.payment-method {
+  position: relative;
+}
+.login-component2 {
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 0 var(--padding-8xl) 0 var(--padding-9xl);
+  box-sizing: border-box;
+}
+.action-divider,
+.login-component-parent,
+.login-component2 {
+  display: flex;
+  align-items: flex-start;
+  max-width: 100%;
+}
+.login-component-parent {
+  width: 1089px;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--gap-6xl);
+}
+.action-divider {
+  width: 1419px;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0 var(--padding-xl) var(--padding-11xl);
+  box-sizing: border-box;
+  text-align: left;
+  font-size: var(--font-size-29xl);
+  color: var(--color-white);
+  font-family: var(--font-merriweather-sans);
+}
+@media screen and (max-width: 1000px) {
+  .payment-method {
+    font-size: var(--font-size-19xl);
+  }
+}
+@media screen and (max-width: 450px) {
+  .payment-method {
+    font-size: var(--font-size-10xl);
+  }
+}

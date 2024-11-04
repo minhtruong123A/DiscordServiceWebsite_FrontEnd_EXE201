@@ -1,0 +1,71 @@
+.login-button-container-child {
+  align-self: stretch;
+  height: 52px;
+  z-index: 1;
+}
+
+.dont-have-an,
+.register2 {
+  position: relative;
+  z-index: 1;
+}
+
+.dont-have-an {
+  flex: 1;
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+.register2 {
+  display: inline-block;
+  min-width: 77px;
+  cursor: pointer;
+}
+
+.login-button-container,
+.register-prompt,
+.registration {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.register-prompt {
+  width: 287.3px;
+  flex-direction: row;
+  gap: var(--gap-8xs-3);
+}
+
+.login-button-container,
+.registration {
+  max-width: 100%;
+}
+
+.registration {
+  flex-direction: row;
+  padding: 0 var(--padding-lgi);
+  box-sizing: border-box;
+}
+
+.login-button-container {
+  align-self: stretch;
+  flex-direction: column;
+  gap: var(--gap-xs);
+  text-align: center;
+  font-size: var(--font-size-xl);
+  color: var(--color-white);
+  font-family: var(--font-roboto);
+}
+
+@media screen and (max-width: 450px) {
+  .login-button-container-child {
+    padding-left: var(--padding-xl);
+    padding-right: var(--padding-xl);
+    box-sizing: border-box;
+  }
+
+  .dont-have-an,
+  .register2 {
+    font-size: var(--font-size-base);
+  }
+}

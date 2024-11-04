@@ -1,0 +1,95 @@
+.welcome-content-child {
+  width: 1460px;
+  height: 463px;
+  position: relative;
+  background: linear-gradient(-90deg, #3533cd, #000);
+  display: none;
+  max-width: 100%;
+}
+.welcome-to {
+  margin: 0;
+}
+.welcome-to-service-container {
+  margin: 0;
+  width: 740px;
+  height: 242px;
+  position: relative;
+  font-size: inherit;
+  font-weight: 800;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  z-index: 2;
+}
+.button-row {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: var(--gap-12xl);
+  max-width: 100%;
+}
+.content-columns {
+  width: 520px;
+  flex-direction: row;
+  padding: 0 var(--padding-9xl);
+}
+.content-columns,
+.welcome-content,
+.welcome-content-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.welcome-content {
+  flex: 1;
+  background: linear-gradient(-90deg, #3533cd, #000);
+  flex-direction: column;
+  padding: var(--padding-8xl) var(--padding-xl) var(--padding-95xl)
+    var(--padding-95xl);
+  gap: var(--gap-8xl);
+}
+.welcome-content-wrapper {
+  align-self: stretch;
+  flex-direction: row;
+  padding: 0 0 var(--padding-76xl);
+  text-align: left;
+  font-size: var(--font-size-77xl);
+  color: var(--color-white);
+  font-family: var(--font-merriweather-sans);
+}
+@media screen and (max-width: 1125px) {
+  .welcome-content {
+    padding-left: var(--padding-38xl);
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 800px) {
+  .welcome-to-service-container {
+    font-size: var(--font-size-29xl);
+  }
+  .welcome-content-wrapper {
+    padding-bottom: var(--padding-43xl);
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 450px) {
+  .welcome-to-service-container {
+    font-size: var(--font-size-10xl);
+  }
+  .button-row {
+    gap: var(--gap-mini);
+  }
+  .welcome-content {
+    padding-left: var(--padding-xl);
+    padding-top: var(--padding-xl);
+    padding-bottom: var(--padding-55xl);
+    box-sizing: border-box;
+  }
+}

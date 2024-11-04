@@ -1,0 +1,313 @@
+.premium-trial1 {
+  margin: 0;
+  height: 70px;
+  position: relative;
+  font-size: inherit;
+  font-weight: 700;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+}
+
+.trial-header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-119xl) 0 var(--padding-155xl);
+}
+
+.get-5-days {
+  align-self: stretch;
+  position: relative;
+  font-size: var(--font-size-13xl);
+  opacity: 0.7;
+  font-family: var(--font-roboto);
+  text-align: center;
+}
+
+.trial-info {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-smi-2);
+}
+
+.plan-options-child {
+  width: 431px;
+  height: 578px;
+  position: relative;
+  box-shadow: 40.5px -40.5px 40.5px rgba(165, 165, 165, 0.1) inset,
+    -40.5px 40.5px 40.5px rgba(255, 255, 255, 0.1) inset;
+  backdrop-filter: blur(80.9px);
+  border-radius: var(--br-11xl);
+  background-color: var(--color-gainsboro);
+  border: 3px solid var(--color-white);
+  box-sizing: border-box;
+  display: none;
+  max-width: 100%;
+  z-index: 0;
+}
+
+.monthly {
+  margin: 0;
+  position: relative;
+  font-size: inherit;
+  font-weight: 600;
+  font-family: inherit;
+  z-index: 1;
+  color: white;
+  text-shadow: 5px 5px black;
+}
+
+.monthly-type {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0 0 0 var(--padding-20xl);
+}
+
+.sale {
+  margin: 0;
+  z-index: 1;
+}
+
+.monthly2 {
+  font-size: var(--font-size-9xl);
+}
+
+.sale-499-monthly-container {
+  position: relative;
+  font-family: var(--font-roboto);
+  text-align: center;
+  z-index: 1;
+  font-size: var(--font-size-25xl);
+}
+
+.monthly-info,
+.monthly-pricing {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.monthly-pricing {
+  flex-direction: column;
+  gap: var(--gap-5xs);
+  flex-shrink: 0;
+}
+
+.monthly-info {
+  flex-direction: row;
+  padding: 0 var(--padding-4xl);
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.data-storage {
+  margin-bottom: 10px;
+}
+
+.data-storage-calculate-statis {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  padding-left: var(--padding-18xl);
+}
+
+.data-storage-calculate-container {
+  align-self: stretch;
+  position: relative;
+  font-size: var(--font-size-9xl);
+  font-family: var(--font-roboto);
+  text-align: left;
+  margin-top: 25px;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.monthly-button,
+.monthly-option {
+  align-self: stretch;
+  display: flex;
+  align-items: flex-start;
+}
+
+.monthly-option {
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--gap-xs-8);
+  max-width: 100%;
+}
+
+.monthly-button {
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 0 var(--padding-29xl) 0 var(--padding-37xl);
+}
+
+.crown-4-icon,
+.star-1-icon {
+  position: absolute;
+  margin: 0 !important;
+  z-index: 2;
+}
+
+.star-1-icon {
+  width: 163px;
+  height: 163px;
+  right: -70px;
+  bottom: -51px;
+  object-fit: cover;
+}
+
+.crown-4-icon {
+  width: 195.4px;
+  height: 195.4px;
+  top: -100.9px;
+  left: -79px;
+  object-fit: contain;
+}
+
+.plan-details,
+.plan-options {
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
+
+.plan-options {
+  flex: 1;
+  box-shadow: 40.5px -40.5px 40.5px rgba(165, 165, 165, 0.1) inset,
+    -40.5px 40.5px 40.5px rgba(255, 255, 255, 0.1) inset;
+  backdrop-filter: blur(80.9px);
+  border-radius: var(--br-11xl);
+  background-color: var(--color-gainsboro);
+  border: 3px solid var(--color-white);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: var(--padding-10xl) var(--padding-4xl) var(--padding-8xl) var(--padding-mini);
+  position: relative;
+  gap: var(--gap-127xl-1);
+  max-width: 100%;
+}
+
+.plan-details {
+  align-self: stretch;
+  flex-direction: row;
+  padding: 0 var(--padding-257xl) 0 var(--padding-256xl);
+  text-align: center;
+  font-size: var(--font-size-45xl);
+}
+
+.content1,
+.plan-details,
+.trial-info-parent {
+  display: flex;
+  align-items: flex-start;
+  max-width: 100%;
+}
+
+.trial-info-parent {
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--gap-77xl-9);
+}
+
+.content1 {
+  align-self: stretch;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0 var(--padding-xl) var(--padding-12xl-1);
+  box-sizing: border-box;
+  text-align: left;
+  font-size: var(--font-size-77xl);
+  color: var(--color-white);
+  font-family: var(--font-merriweather-sans);
+}
+
+@media screen and (max-width: 975px) {
+  .premium-trial1 {
+    font-size: var(--font-size-29xl);
+  }
+
+  .trial-header {
+    padding-left: var(--padding-68xl);
+    padding-right: var(--padding-50xl);
+    box-sizing: border-box;
+  }
+
+  .get-5-days {
+    font-size: var(--font-size-7xl);
+  }
+
+  .monthly {
+    font-size: var(--font-size-32xl);
+  }
+
+  .plan-details {
+    padding-left: var(--padding-118xl);
+    padding-right: var(--padding-119xl);
+    box-sizing: border-box;
+  }
+
+  .trial-info-parent {
+    gap: var(--gap-29xl);
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .trial-header {
+    padding-left: var(--padding-24xl);
+    padding-right: var(--padding-15xl);
+    box-sizing: border-box;
+  }
+
+  .plan-options {
+    padding-top: var(--padding-xl);
+    padding-bottom: var(--padding-xl);
+    box-sizing: border-box;
+  }
+
+  .plan-details {
+    padding-left: var(--padding-49xl);
+    padding-right: var(--padding-50xl);
+    box-sizing: border-box;
+  }
+
+  .trial-info-parent {
+    gap: var(--gap-5xl);
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .premium-trial1 {
+    font-size: var(--font-size-10xl);
+  }
+
+  .get-5-days {
+    font-size: var(--font-size-lgi);
+  }
+
+  .monthly {
+    font-size: var(--font-size-19xl);
+  }
+
+  .data-storage-calculate-container,
+  .sale-499-monthly-container {
+    font-size: var(--font-size-3xl);
+  }
+
+  .monthly-button {
+    padding-left: var(--padding-xl);
+    padding-right: var(--padding-xl);
+    box-sizing: border-box;
+  }
+
+  .plan-options {
+    gap: var(--gap-54xl);
+  }
+}

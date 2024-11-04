@@ -1,0 +1,23 @@
+.payment {
+  width: 100%;
+  position: relative;
+  background-color: var(--color-darkslategray-100);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 63px;
+  line-height: normal;
+  letter-spacing: normal;
+}
+@media screen and (max-width: 725px) {
+  .payment {
+    gap: var(--gap-12xl);
+  }
+}
+@media screen and (max-width: 450px) {
+  .payment {
+    gap: var(--gap-base);
+  }
+}

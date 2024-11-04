@@ -1,0 +1,100 @@
+.rectangle-header {
+  align-self: stretch;
+  height: 167px;
+  position: relative;
+  background-color: var(--color-midnightblue);
+  display: none;
+}
+.exe-discord-bot-logo6 {
+  height: 112px;
+  width: 112px;
+  position: relative;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  z-index: 1;
+}
+.service-discord8 {
+  position: relative;
+  font-weight: 900;
+}
+.service-discord-container {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  cursor: pointer;
+  z-index: 1;
+}
+.exe-discord-bot-logo-parent1,
+.frame-wrapper1 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+.frame-wrapper1 {
+  flex: 1;
+  flex-direction: column;
+  padding: var(--padding-7xl) 0 0;
+  box-sizing: border-box;
+}
+.exe-discord-bot-logo-parent1 {
+  flex-direction: row;
+  gap: var(--gap-2xs);
+}
+.component-2-wrapper {
+  width: 238px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0 0 var(--padding-12xl);
+  box-sizing: border-box;
+}
+.frame-container,
+.frame-group {
+  display: flex;
+  flex-direction: row;
+  max-width: 100%;
+}
+.frame-group {
+  flex: 1;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--gap-xl);
+}
+.frame-container {
+  width: 1399px;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0 var(--padding-2xl);
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+.frame-div,
+.separator1 {
+  align-self: stretch;
+  box-sizing: border-box;
+}
+.separator1 {
+  height: 3px;
+  position: relative;
+  border-top: 3px solid var(--color-white);
+  z-index: 1;
+}
+.frame-div {
+  background-color: var(--color-midnightblue);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: var(--padding-8xl) 0 var(--padding-10xs);
+  gap: var(--gap-9xl);
+  max-width: 100%;
+  text-align: left;
+  font-size: var(--font-size-29xl);
+  color: var(--color-white);
+  font-family: var(--font-merriweather);
+}

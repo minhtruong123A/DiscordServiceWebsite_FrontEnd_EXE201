@@ -1,0 +1,236 @@
+.copyright-20241,
+.footer-item {
+  position: relative;
+  max-width: 100%;
+}
+.footer-item {
+  height: 361px;
+  width: 1440px;
+  background-color: var(--color-gray-200);
+  display: none;
+}
+.copyright-20241 {
+  width: 380px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  z-index: 1;
+}
+.exe-discord-bot-logo5,
+.facebook-logo-white-11 {
+  width: 36px;
+  height: 36px;
+  position: relative;
+  object-fit: cover;
+  z-index: 1;
+}
+.exe-discord-bot-logo5 {
+  height: 98px;
+  width: 98px;
+  border-radius: 50%;
+}
+.exe-discord-bot-logo-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0 var(--padding-mid) 0 0;
+}
+.facebook-link,
+.facebook-link-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.facebook-link {
+  align-items: flex-end;
+  gap: var(--gap-6xl);
+}
+.facebook-link-wrapper {
+  align-items: flex-start;
+  padding: var(--padding-12xs) 0 0;
+}
+.messenger-white-11,
+.phone-call-white-11,
+.twitter-white-11 {
+  height: 36px;
+  width: 35px;
+  position: relative;
+  object-fit: cover;
+  z-index: 1;
+}
+.phone-call-white-11,
+.twitter-white-11 {
+  width: 36px;
+}
+.phone-call-white-11 {
+  height: 35px;
+}
+.phone-call-white-1-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0 0 var(--padding-12xs);
+}
+.white-1-icon1 {
+  width: 48px;
+  height: 36px;
+  position: relative;
+  object-fit: cover;
+  z-index: 1;
+}
+.contact-icons {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--gap-xl);
+}
+.contact-details {
+  width: 338px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-17xl) var(--padding-3xs);
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.service-discord7 {
+  margin: 0;
+  position: relative;
+  font-size: inherit;
+  font-weight: 900;
+  font-family: inherit;
+  z-index: 1;
+}
+.cbertechzone1 {
+  position: relative;
+  font-weight: 500;
+  z-index: 1;
+}
+.cbertechzone-removebg-preview-icon1 {
+  height: 57px;
+  width: 62px;
+  position: relative;
+  object-fit: cover;
+  z-index: 1;
+}
+.company-logo {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 var(--padding-xl);
+}
+.company-info1,
+.company-name {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.company-name {
+  flex: 1;
+  flex-direction: column;
+  gap: var(--gap-7xs);
+}
+.company-info1 {
+  flex-direction: row;
+  padding: 0 var(--padding-mid);
+  font-size: var(--font-size-13xl);
+  font-family: var(--font-montserrat);
+}
+.contact-info {
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--gap-15xl);
+}
+.contact-info,
+.footer1,
+.social-icons1,
+.social-links {
+  display: flex;
+  align-items: flex-start;
+  max-width: 100%;
+}
+.social-icons1 {
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: var(--gap-12xs);
+}
+.footer1,
+.social-links {
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 0 var(--padding-6xl);
+  box-sizing: border-box;
+  font-size: var(--font-size-29xl);
+  font-family: var(--font-merriweather);
+}
+.footer1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--padding-22xl) var(--padding-4xl) var(--padding-lg);
+  gap: var(--gap-50xl);
+  text-align: left;
+  font-size: var(--font-size-sm);
+  color: var(--color-white);
+  font-family: var(--font-roboto);
+}
+
+.copyright-20241 {
+  margin-right: auto;
+}
+@media screen and (max-width: 975px) {
+  .service-discord7 {
+    font-size: var(--font-size-19xl);
+  }
+  .cbertechzone1 {
+    font-size: var(--font-size-7xl);
+  }
+  .social-links {
+    flex: 1;
+  }
+  .footer1 {
+    gap: var(--gap-15xl);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 700px) {
+  .social-icons1 {
+    flex-wrap: wrap;
+  }
+  .social-links {
+    min-width: 100%;
+  }
+  .footer1 {
+    gap: var(--gap-mid);
+  }
+}
+@media screen and (max-width: 450px) {
+  .contact-icons {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .service-discord7 {
+    font-size: var(--font-size-10xl);
+  }
+  .cbertechzone1 {
+    font-size: var(--font-size-lgi);
+  }
+  .contact-info {
+    gap: var(--gap-mid);
+  }
+  .footer1 {
+    padding-top: var(--padding-8xl);
+    padding-bottom: var(--padding-xl);
+    box-sizing: border-box;
+  }
+}

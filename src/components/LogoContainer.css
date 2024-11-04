@@ -1,0 +1,183 @@
+.logo-container-child {
+  height: 606px;
+  width: 1038px;
+  position: relative;
+  box-shadow: 54.8px -54.8px 54.8px rgba(122, 139, 194, 0.1) inset,
+    -54.8px 54.8px 54.8px rgba(255, 255, 255, 0.1) inset;
+  backdrop-filter: blur(109.6px);
+  border-radius: var(--br-11xl);
+  background-color: var(--color-gainsboro);
+  display: none;
+  max-width: 100%;
+}
+.exe-discord-bot-logo3 {
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+  border-radius: 50%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+.exe-discord-bot-logo-wrapper {
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-4xs) 0 0;
+  box-sizing: border-box;
+}
+.login1 {
+  margin: 0;
+  flex: 1;
+  position: relative;
+  font-size: inherit;
+  font-weight: 700;
+  font-family: inherit;
+  z-index: 1;
+}
+.username-field {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0 var(--padding-80xl);
+  font-family: var(--font-merriweather-sans);
+}
+.username {
+  position: relative;
+  font-weight: 500;
+  display: inline-block;
+  min-width: 111px;
+  z-index: 1;
+}
+.username-divider {
+  align-self: stretch;
+  height: 1px;
+  position: relative;
+  border-top: 1px solid var(--color-white);
+  box-sizing: border-box;
+  z-index: 1;
+}
+.password-box {
+  align-self: stretch;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 0 var(--padding-3xs);
+  gap: var(--gap-8xs);
+}
+.password-field {
+  border: 0;
+  background-color: transparent;
+  align-self: stretch;
+  font-family: var(--font-roboto);
+  font-weight: 500;
+  font-size: var(--font-size-5xl);
+  color: var(--color-white);
+}
+.forgot-password1 {
+  position: relative;
+  font-weight: 500;
+  z-index: 1;
+}
+.forgot-password,
+.password-input {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-12xs) 0 var(--padding-11xs);
+  font-size: var(--font-size-xl);
+}
+.password-input {
+  align-self: stretch;
+  flex-direction: column;
+  padding: 0 0 var(--padding-base);
+  gap: var(--gap-2xs);
+  text-align: left;
+  font-size: var(--font-size-5xl);
+}
+.login-fields,
+.logo-container1 {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+.login-fields {
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--gap-10xl);
+  min-width: 242px;
+}
+.logo-container1 {
+  box-shadow: 54.8px -54.8px 54.8px rgba(122, 139, 194, 0.1) inset,
+    -54.8px 54.8px 54.8px rgba(255, 255, 255, 0.1) inset;
+  backdrop-filter: blur(109.6px);
+  border-radius: var(--br-11xl);
+  background-color: var(--color-gainsboro);
+  flex-direction: row;
+  align-items: flex-start;
+  padding: var(--padding-119xl) var(--padding-127xl) var(--padding-84xl)
+    var(--padding-95xl);
+  box-sizing: border-box;
+  gap: var(--gap-75xl);
+  text-align: center;
+  font-size: var(--font-size-45xl);
+  color: var(--color-white);
+  font-family: var(--font-roboto);
+}
+@media screen and (max-width: 1225px) {
+  .exe-discord-bot-logo3 {
+    align-self: stretch;
+    width: auto;
+  }
+  .exe-discord-bot-logo-wrapper {
+    flex: 1;
+  }
+  .logo-container1 {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 1050px) {
+  .logo-container1 {
+    gap: var(--gap-28xl);
+    padding-left: var(--padding-38xl);
+    padding-right: var(--padding-54xl);
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 750px) {
+  .login1 {
+    font-size: var(--font-size-32xl);
+  }
+  .logo-container1 {
+    gap: var(--gap-4xl);
+    padding: var(--padding-71xl) var(--padding-17xl) var(--padding-48xl)
+      var(--padding-9xl);
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 450px) {
+  .login1 {
+    font-size: var(--font-size-19xl);
+  }
+  .username-field {
+    padding-left: var(--padding-xl);
+    padding-right: var(--padding-xl);
+    box-sizing: border-box;
+  }
+  .username {
+    font-size: var(--font-size-lgi);
+  }
+  .forgot-password1 {
+    font-size: var(--font-size-base);
+  }
+}

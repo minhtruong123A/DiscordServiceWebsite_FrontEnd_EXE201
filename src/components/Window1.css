@@ -1,0 +1,197 @@
+
+.window-child {
+  height: 606px;
+  width: 1038px;
+  position: relative;
+  box-shadow: 54.8px -54.8px 54.8px rgba(122, 139, 194, 0.1) inset,
+    -54.8px 54.8px 54.8px rgba(255, 255, 255, 0.1) inset;
+  backdrop-filter: blur(109.6px);
+  border-radius: var(--br-11xl);
+  background-color: var(--color-gainsboro);
+  display: none;
+  max-width: 100%;
+}
+.exe-discord-bot-logo {
+  align-self: stretch;
+  flex: 1;
+  position: relative;
+  border-radius: 50%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+.content {
+  height: 376px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-46xl) 0 0;
+  box-sizing: border-box;
+}
+.register1 {
+  margin: 0;
+  flex: 1;
+  position: relative;
+  font-size: var(--font-size-45xl);
+  font-weight: 700;
+  font-family: var(--font-merriweather-sans);
+  color: var(--color-white);
+  text-align: center;
+  z-index: 1;
+}
+.input-fields {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-33xl) 0 var(--padding-34xl);
+}
+.input-containers,
+.password {
+  font-size: var(--font-size-5xl);
+  font-weight: 500;
+  font-family: var(--font-roboto);
+  color: var(--color-white);
+}
+.input-containers {
+  border: 0;
+  background-color: transparent;
+  align-self: stretch;
+}
+.password {
+  position: relative;
+  text-align: left;
+  display: inline-block;
+  min-width: 108px;
+  z-index: 1;
+}
+.input-containers-child {
+  align-self: stretch;
+  height: 1px;
+  position: relative;
+  border-top: 1px solid var(--color-white);
+  box-sizing: border-box;
+  z-index: 1;
+}
+.input-containers1 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 0 var(--padding-12xs);
+  gap: var(--gap-8xs);
+}
+.confirm-password {
+  position: relative;
+  font-size: var(--font-size-5xl);
+  font-weight: 500;
+  font-family: var(--font-roboto);
+  color: var(--color-white);
+  text-align: left;
+  z-index: 1;
+}
+.confirm-password-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 var(--padding-12xs) 0 var(--padding-11xs);
+}
+.input-rows {
+  align-self: stretch;
+  flex-direction: column;
+  gap: var(--gap-3xl);
+}
+.form,
+.form-container,
+.input-rows,
+.window {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.form {
+  align-self: stretch;
+  flex-direction: column;
+  gap: var(--gap-10xl);
+}
+.form-container,
+.window {
+  flex: 1;
+  max-width: 100%;
+}
+.form-container {
+  margin: 0;
+  flex-direction: column;
+  gap: var(--gap-41xl);
+  min-width: 242px;
+}
+.window {
+  box-shadow: 54.8px -54.8px 54.8px rgba(122, 139, 194, 0.1) inset,
+    -54.8px 54.8px 54.8px rgba(255, 255, 255, 0.1) inset;
+  backdrop-filter: blur(109.6px);
+  border-radius: var(--br-11xl);
+  background-color: var(--color-gainsboro);
+  flex-direction: row;
+  padding: var(--padding-63xl) var(--padding-127xl) var(--padding-103xl)
+    var(--padding-95xl);
+  box-sizing: border-box;
+  gap: var(--gap-75xl);
+}
+@media screen and (max-width: 1225px) {
+  .exe-discord-bot-logo {
+    align-self: stretch;
+    width: auto;
+  }
+  .content {
+    flex: 1;
+  }
+  .window {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 1050px) {
+  .window {
+    gap: var(--gap-28xl);
+    padding-left: var(--padding-38xl);
+    padding-right: var(--padding-54xl);
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 750px) {
+  .register1 {
+    font-size: var(--font-size-32xl);
+  }
+  .window {
+    gap: var(--gap-4xl);
+    padding: var(--padding-34xl) var(--padding-17xl) var(--padding-60xl)
+      var(--padding-9xl);
+    box-sizing: border-box;
+  }
+}
+@media screen and (max-width: 450px) {
+  .content {
+    padding-top: var(--padding-23xl);
+    box-sizing: border-box;
+  }
+  .register1 {
+    font-size: var(--font-size-19xl);
+  }
+  .input-fields {
+    padding-left: var(--padding-xl);
+    padding-right: var(--padding-xl);
+    box-sizing: border-box;
+  }
+  .confirm-password,
+  .password {
+    font-size: var(--font-size-lgi);
+  }
+  .form-container {
+    gap: var(--gap-11xl);
+  }
+}

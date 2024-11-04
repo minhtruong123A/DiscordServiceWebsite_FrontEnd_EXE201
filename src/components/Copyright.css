@@ -1,0 +1,241 @@
+.copyright-2024,
+.footer-child {
+  position: relative;
+  max-width: 100%;
+}
+.footer-child {
+  height: 361px;
+  width: 1440px;
+  background-color: var(--color-gray-200);
+  display: none;
+}
+.copyright-2024 {
+  width: 380px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  z-index: 1;
+}
+.facebook-logo-white-1 {
+  width: 36px;
+  height: 36px;
+  position: relative;
+  object-fit: cover;
+  z-index: 1;
+}
+.exe-discord-bot-logo2 {
+  position: absolute;
+  width: calc(100% - 16px);
+  top: 4px;
+  right: 8px;
+  left: 8px;
+  border-radius: 50%;
+  max-width: 100%;
+  overflow: hidden;
+  height: 98px;
+  object-fit: cover;
+  z-index: 1;
+}
+.market-research-presentation-r {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+.exe-discord-bot-logo-parent {
+  height: 105px;
+  flex: 1;
+  position: relative;
+}
+.logo-container {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0 var(--padding-3xs) 0 0;
+}
+.footer-items {
+  width: 124px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: var(--gap-3xl);
+}
+.messenger-white-1,
+.phone-call-white-1,
+.twitter-white-1,
+.white-1-icon {
+  height: 36px;
+  width: 35px;
+  position: relative;
+  object-fit: cover;
+  z-index: 1;
+}
+.phone-call-white-1,
+.twitter-white-1,
+.white-1-icon {
+  width: 36px;
+}
+.phone-call-white-1,
+.white-1-icon {
+  height: 35px;
+}
+.white-1-icon {
+  height: 36px;
+  width: 48px;
+}
+.contact-container,
+.social-icons {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.social-icons {
+  flex: 1;
+  justify-content: space-between;
+  gap: var(--gap-xl);
+}
+.contact-container {
+  width: 340px;
+  justify-content: flex-start;
+  padding: 0 var(--padding-18xl) var(--padding-3xs);
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.service-discord5 {
+  margin: 0;
+  color: white;
+  position: relative;
+  font-size: inherit;
+  font-weight: 900;
+  font-family: inherit;
+  z-index: 1;
+}
+.cbertechzone {
+  position: relative;
+  font-weight: 500;
+  z-index: 1;
+}
+.cbertechzone-removebg-preview-icon {
+  height: 57px;
+  width: 62px;
+  position: relative;
+  object-fit: cover;
+  z-index: 1;
+}
+.company-logo-container {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 var(--padding-xl);
+}
+.company-container,
+.company-info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.company-container {
+  flex: 1;
+  flex-direction: column;
+  gap: var(--gap-7xs);
+}
+.company-info {
+  flex-direction: row;
+  padding: 0 var(--padding-mid);
+  font-size: var(--font-size-13xl);
+  font-family: var(--font-montserrat);
+}
+.contact-container-parent {
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--gap-15xl);
+}
+.contact-container-parent,
+.footer,
+.footer-container,
+.footer-content {
+  display: flex;
+  align-items: flex-start;
+  max-width: 100%;
+}
+.footer-container {
+  flex-direction: row;
+  justify-content: flex-start;
+  row-gap: 20px;
+}
+.footer,
+.footer-content {
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 0 var(--padding-6xl);
+  box-sizing: border-box;
+  font-size: var(--font-size-29xl);
+  font-family: var(--font-merriweather);
+}
+.footer {
+  align-self: stretch;
+  background-color: var(--color-gray-200);
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: var(--padding-23xl) var(--padding-4xl) var(--padding-lg);
+  gap: var(--gap-42xl);
+  text-align: left;
+  font-size: var(--font-size-sm);
+  color: var(--color-white);
+  font-family: var(--font-roboto);
+}
+@media screen and (max-width: 1125px) {
+  .footer-content {
+    flex: 1;
+  }
+  .footer {
+    gap: var(--gap-11xl);
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 800px) {
+  .service-discord5 {
+    font-size: var(--font-size-19xl);
+  }
+  .cbertechzone {
+    font-size: var(--font-size-7xl);
+  }
+  .footer-container {
+    flex-wrap: wrap;
+  }
+  .footer-content {
+    min-width: 100%;
+  }
+  .footer {
+    gap: var(--gap-mini);
+  }
+}
+@media screen and (max-width: 450px) {
+  .social-icons {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .service-discord5 {
+    font-size: var(--font-size-10xl);
+  }
+  .cbertechzone {
+    font-size: var(--font-size-lgi);
+  }
+  .contact-container-parent {
+    gap: var(--gap-mid);
+  }
+  .footer {
+    padding-top: var(--padding-8xl);
+    padding-bottom: var(--padding-xl);
+    box-sizing: border-box;
+  }
+}
