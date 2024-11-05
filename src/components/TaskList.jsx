@@ -175,7 +175,7 @@ const TaskList = ({ className = "" }) => {
           </div>
         ))
       ) : (
-        <p>Permission prohibited for this user!</p>
+        <p>Task user not found!</p>
       )}
 
 

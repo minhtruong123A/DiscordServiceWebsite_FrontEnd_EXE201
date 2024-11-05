@@ -45,8 +45,6 @@ const LoginButtonContainer = ({
   const handleSubmit = async () => {
     if (isLogin) {
       // Handle login
-      console.log("Username:", username);
-      console.log("Password:", password);
       if (!username || !password) {
         setError("Username and Password cannot be empty");
         return;
@@ -62,8 +60,6 @@ const LoginButtonContainer = ({
             "Content-Type": "multipart/form-data",
           },
         });
-
-        console.log("Response Data:", response.data);
 
         if (response.data.access_token) {
           const { access_token, refresh_token, username, role } = response.data;
@@ -121,8 +117,6 @@ const LoginButtonContainer = ({
             "Content-Type": "application/json",
           },
         });
-
-        console.log("Response Data:", response.data);
 
         if (response.data.success) {
           navigate("/login"); // Redirect to login after successful registration
