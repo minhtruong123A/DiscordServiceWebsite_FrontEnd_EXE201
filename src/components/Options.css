@@ -7,16 +7,20 @@
   display: none;
   max-width: 100%;
 }
+
 .vnpay-qr {
   font-size: var(--font-size-5xl);
   font-family: var(--font-roboto);
 }
+
 .vietinbank {
   font-weight: 500;
 }
+
 .vnpay-qr-vietinbank {
   margin: 0;
 }
+
 .frame-child3 {
   height: 52px;
   width: 223px;
@@ -25,11 +29,13 @@
   background-color: var(--color-gray-100);
   display: none;
 }
+
 .cancel {
   flex: 1;
   position: relative;
   z-index: 1;
 }
+
 .group-div {
   width: 223px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
@@ -44,11 +50,13 @@
   cursor: pointer;
   z-index: 1;
 }
+
 .group-button {
   height: 52px;
   width: 223px;
   z-index: 1;
 }
+
 .frame-parent1,
 .messenger-twitter-icons-inner {
   display: flex;
@@ -58,10 +66,12 @@
   margin-top: 30px;
   max-width: 100%;
 }
+
 .frame-parent1 {
   flex: 1;
   gap: var(--gap-25xl);
 }
+
 .messenger-twitter-icons-inner {
   align-self: stretch;
   padding: 0 0 0 var(--padding-smi);
@@ -77,11 +87,13 @@
   align-items: flex-start;
   max-width: 100%;
 }
+
 .messenger-twitter-icons {
   align-self: stretch;
   justify-content: flex-start;
   gap: var(--gap-89xl);
 }
+
 .messenger-twitter-icons-wrapper {
   flex: 1;
   justify-content: flex-end;
@@ -89,17 +101,20 @@
   box-sizing: border-box;
   min-width: 351px;
 }
+
 .navigation,
 .navigation-child {
   width: 1px;
   box-sizing: border-box;
 }
+
 .navigation-child {
   flex: 1;
   position: relative;
   border-right: 1px solid var(--color-black);
   z-index: 1;
 }
+
 .navigation {
   height: 378px;
   display: flex;
@@ -108,12 +123,14 @@
   justify-content: flex-end;
   padding: 0 0 var(--padding-11xl);
 }
+
 .scan-qr-code {
   flex: 1;
   position: relative;
   font-weight: 500;
   z-index: 1;
 }
+
 .scan-qr-code-wrapper {
   align-self: stretch;
   display: flex;
@@ -122,6 +139,7 @@
   justify-content: flex-start;
   padding: 0 var(--padding-11xs);
 }
+
 .qr-code-1 {
   align-self: stretch;
   height: 358px;
@@ -133,6 +151,7 @@
   z-index: 2;
   margin-top: -26px;
 }
+
 .frame-parent2,
 .options {
   display: flex;
@@ -143,6 +162,7 @@
   text-align: center;
   font-size: var(--font-size-37xl-5);
 }
+
 .options {
   align-self: stretch;
   box-shadow: -12px 11px 4px 5px rgba(0, 0, 0, 0.25);
@@ -160,22 +180,45 @@
   font-family: var(--font-roboto);
 }
 
-.instruct{
-  font-size: var(--font-size-xl);
+.instruct {
+  font-size: 18px;
   font-family: var(--font-size-xl);
 }
 
-.instruct-bold{
-  font-size: var(--font-size-xl);
+.instruct3 {
+  font-size: 18px;
   font-family: var(--font-size-xl);
   font-weight: bold;
-  color:  #313331;
+  color: black;
 }
-.instruct-content{
+
+.instruct2 {
+  font-size: 15px;
+  font-family: var(--font-size-xl);
+  font-weight: bold;
+  color: #ec0000;
+}
+
+.instruct-bold {
+  font-size: 15px;
+  font-family: var(--font-size-xl);
+  font-weight: bold;
+  color: #ec0000;
+}
+
+.instruct-bold2 {
+  font-size: 15px;
+  font-family: var(--font-size-xl);
+  font-weight: normal;
+  color: #1200b7;
+}
+
+.instruct-content {
   font-size: var(--font-size-19xl);
   font-family: var(--font-size-xl);
   font-weight: bold;
 }
+
 @media screen and (max-width: 1050px) {
   .options {
     padding-left: var(--padding-13xl);
@@ -183,36 +226,45 @@
     box-sizing: border-box;
   }
 }
+
 @media screen and (max-width: 1000px) {
   .cancel {
     font-size: var(--font-size-9xl);
   }
+
   .scan-qr-code {
     font-size: var(--font-size-26xl);
   }
 }
+
 @media screen and (max-width: 725px) {
   .frame-parent1 {
     gap: var(--gap-3xl);
     flex-wrap: wrap;
   }
+
   .messenger-twitter-icons {
     gap: var(--gap-35xl);
   }
+
   .messenger-twitter-icons-wrapper {
     min-width: 100%;
   }
 }
+
 @media screen and (max-width: 450px) {
   .vnpay-qr-vietinbank-container {
     font-size: var(--font-size-lgi);
   }
+
   .cancel {
     font-size: var(--font-size-2xl);
   }
+
   .messenger-twitter-icons {
     gap: var(--gap-8xl);
   }
+
   .scan-qr-code {
     font-size: var(--font-size-15xl);
   }

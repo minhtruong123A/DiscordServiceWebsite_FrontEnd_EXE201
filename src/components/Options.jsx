@@ -21,16 +21,17 @@ const Options = ({ className = "" }) => {
       <div className="messenger-twitter-icons-wrapper">
         <div className="messenger-twitter-icons">
           <div className="instruct-container">
-          <span className="instruct-content">To upgrade to Premium Bot</span>
+            <span className="instruct-content">To upgrade to Premium Bot</span>
             <p className="vnpay-qr-vietinbank">
-            <br></br>
-              <span className="instruct">1. Launch Smartbanking or any payment application</span><br></br>
-              <span className="instruct">2. Use your phone camera to scan the QR code</span><br></br>
-              <span className="instruct">3. Enter the following details:</span>
+              <br></br>
+              <span className="instruct"><span className="instruct3">1.</span> Launch Smartbanking or any payment application</span><br></br>
+              <span className="instruct"><span className="instruct3">2.</span> Scan the QR code; the account name will appear as:</span><br></br>
+              <span className="instruct2"><span className="instruct3">➤</span>  NGUYEN PHAN MANH KHAI (KHAI NPM) from CberTechzone, VietinBank.</span><br></br>
+              <span className="instruct"><span className="instruct3">3.</span> Enter details:</span>
               <span className="instruct">
-                <span className="instruct-bold"> [username] NAP CBRDIS</span>
-              </span><br></br> 
-              <span className="instruct">4. Your payment will be processed within 5 to 10 minutes</span><br></br>
+                <span className="instruct-bold"> [<span className="instruct-bold2">Your username account, not Discord name</span>] NAP CBRDIS</span>
+              </span><br></br>
+              <span className="instruct"><span className="instruct3">4.</span> Your payment will be processed within 5 to 10 minutes</span><br></br>
             </p>
           </div>
           <div className="messenger-twitter-icons-inner">
@@ -52,7 +53,7 @@ const Options = ({ className = "" }) => {
                 onClick={onGroupContainerClick}
               >
                 Cancel
-              </Button> 
+              </Button>
               <Button
                 className="group-button"
                 disableElevation
@@ -79,7 +80,7 @@ const Options = ({ className = "" }) => {
         <div className="navigation-child" />
       </div>
       <div className="frame-parent2">
-          <img
+        <img
           className="qr-code-1"
           loading="lazy"
           alt=""
