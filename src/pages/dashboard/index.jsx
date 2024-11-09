@@ -74,6 +74,11 @@ export default function DashboardDefault() {
   const [percentagePremiumUsers, setPercentagePremiumUsers] = useState(0);
   const [percentageUsersValue, setPercentageUsers] = useState(0);
   const [UserChangeValue, setUserChange] = useState(0);
+  const [transactions, setTransactions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [totalAmount, setTotalAmount] = useState(0);
+  const exchangeRate = 24500;
 
 
   useEffect(() => {
@@ -135,6 +140,35 @@ export default function DashboardDefault() {
       }
     };
 
+
+    const fetchTransactions = async () => {
+      try {
+        const token = localStorage.getItem('access_token');
+        const response = await fetch('https://exe202backend-ppn5.onrender.com/api/admin/transaction', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          setTransactions(data.data[0]);
+          const total = data.data[0].reduce((acc, transaction) => acc + transaction.payment_ammount, 0);
+          setTotalAmount(total);
+        } else {
+          setError('Failed to fetch data');
+        }
+      } catch (err) {
+        setError('Error fetching transactions');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTransactions();
     fetchAnalytics();
     const intervalId = setInterval(() => {
       fetchAnalytics();
@@ -142,6 +176,16 @@ export default function DashboardDefault() {
 
     return () => clearInterval(intervalId);
   }, [navigate]);
+
+  if (loading) {
+    return <Typography>Loading...</Typography>;
+  }
+
+  if (error) {
+    return <Typography>{error}</Typography>;
+  }
+
+  const totalInUSD = (totalAmount / exchangeRate).toFixed(2);
 
   return (
     <Grid container rowSpacing={4.5} columnSpacing={2.75}>
@@ -171,7 +215,7 @@ export default function DashboardDefault() {
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={2}>
         {/* <AnalyticEcommerce title="Total Sales" count="$35,078" percentage={27.4} isLoss color="warning" extra="$20,395" /> */}
-        <AnalyticEcommerce title="Total Sales" count="$0" extra="$25" />
+        <AnalyticEcommerce title="Total Sales" count={`$${totalInUSD}`} extra="$25" />
       </Grid>
 
       <Grid item md={8} sx={{ display: { sm: 'none', md: 'block', lg: 'none' } }} />
@@ -201,13 +245,89 @@ export default function DashboardDefault() {
       </Grid>
 
       {/* row 2 */}
-      <Grid item xs={12} md={6} lg={6}>
+      <Grid item xs={12} md={4} lg={4}>
         <UniqueVisitorCard />
       </Grid>
 
       {/* them hang */}
-      <Grid item xs={12} md={6} lg={6}>
+      <Grid item xs={12} md={4} lg={4}>
         <SaleReportCard />
+      </Grid>
+
+      <Grid item xs={12} md={4} lg={4}>
+        <Grid container alignItems="center" justifyContent="space-between">
+          <Grid item>
+            <Typography variant="h5">Transaction History</Typography>
+          </Grid>
+        </Grid>
+        <MainCard sx={{ mt: 2 }} content={false}>
+          <List
+            component="nav"
+            sx={{
+              px: 0,
+              py: 0,
+              '& .MuiListItemButton-root': {
+                py: 1.5,
+                '& .MuiAvatar-root': { /* your avatar style */ },
+                '& .MuiListItemSecondaryAction-root': { /* your action style */ }
+              }
+            }}
+          >
+            {transactions.map((transaction) => (
+              <ListItemButton divider key={transaction._id}>
+                <ListItemAvatar>
+                  <Avatar sx={{ color: 'success.main', bgcolor: 'success.lighter' }}>
+                    <GiftOutlined />
+                  </Avatar>
+                </ListItemAvatar>
+                <ListItemText primary={<Typography variant="subtitle1">{`#${transaction.payment_code}`}</Typography>} secondary={`Today, ${new Date(transaction.payment_date).toLocaleTimeString()}`} />
+                <ListItemSecondaryAction>
+                  <Stack alignItems="flex-end">
+                    <Typography variant="subtitle1" noWrap>
+                      + {transaction.payment_ammount}VND
+                    </Typography>
+                    <Typography variant="h6" color="secondary" noWrap>
+                      {`$${(transaction.payment_ammount / exchangeRate).toFixed(2)}`} USD
+                    </Typography>
+                  </Stack>
+                </ListItemSecondaryAction>
+              </ListItemButton>
+            ))}
+          </List>
+        </MainCard>
+
+        <MainCard sx={{ mt: 2 }}>
+          <Stack spacing={3}>
+            <Grid container justifyContent="space-between" alignItems="center">
+              <Grid item>
+                <Stack>
+                  <Typography variant="h5" noWrap>
+                    Help & Support Chat in Facebook
+                  </Typography>
+                  <Typography variant="caption" color="secondary" noWrap>
+                    Typical reply within 5 min
+                  </Typography>
+                </Stack>
+              </Grid>
+              <Grid item>
+                <AvatarGroup sx={{ '& .MuiAvatar-root': { width: 32, height: 32 } }}>
+                  <Avatar alt="Remy Sharp" src={avatar1} />
+                  <Avatar alt="Travis Howard" src={avatar2} />
+                  <Avatar alt="Cindy Baker" src={avatar3} />
+                  <Avatar alt="Agnes Walker" src={avatar4} />
+                </AvatarGroup>
+              </Grid>
+            </Grid>
+            <Button
+              size="small"
+              variant="contained"
+              sx={{ textTransform: 'capitalize' }}
+              onClick={() => window.location.href = "https://www.facebook.com/profile.php?id=61566188733735"}
+            >
+              Need Help, Go to Facebook Channel?
+            </Button>
+          </Stack>
+        </MainCard>
       </Grid>
 
       {/* them hang */}
@@ -359,111 +479,7 @@ export default function DashboardDefault() {
       {/* <Grid item xs={12} md={7} lg={8}>
         <SaleReportCard />
       </Grid> */}
-
-      {/* <Grid item xs={12} md={5} lg={4}>
-        <Grid container alignItems="center" justifyContent="space-between">
-          <Grid item>
-            <Typography variant="h5">Transaction History</Typography>
-          </Grid>
-          <Grid item />
-        </Grid>
-        <MainCard sx={{ mt: 2 }} content={false}>
-          <List
-            component="nav"
-            sx={{
-              px: 0,
-              py: 0,
-              '& .MuiListItemButton-root': {
-                py: 1.5,
-                '& .MuiAvatar-root': avatarSX,
-                '& .MuiListItemSecondaryAction-root': { ...actionSX, position: 'relative' }
-              }
-            }}
-          >
-            <ListItemButton divider>
-              <ListItemAvatar>
-                <Avatar sx={{ color: 'success.main', bgcolor: 'success.lighter' }}>
-                  <GiftOutlined />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText primary={<Typography variant="subtitle1">Order #002434</Typography>} secondary="Today, 2:00 AM" />
-              <ListItemSecondaryAction>
-                <Stack alignItems="flex-end">
-                  <Typography variant="subtitle1" noWrap>
-                    + $1,430
-                  </Typography>
-                  <Typography variant="h6" color="secondary" noWrap>
-                    78%
-                  </Typography>
-                </Stack>
-              </ListItemSecondaryAction>
-            </ListItemButton>
-            <ListItemButton divider>
-              <ListItemAvatar>
-                <Avatar sx={{ color: 'primary.main', bgcolor: 'primary.lighter' }}>
-                  <MessageOutlined />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText primary={<Typography variant="subtitle1">Order #984947</Typography>} secondary="5 August, 1:45 PM" />
-              <ListItemSecondaryAction>
-                <Stack alignItems="flex-end">
-                  <Typography variant="subtitle1" noWrap>
-                    + $302
-                  </Typography>
-                  <Typography variant="h6" color="secondary" noWrap>
-                    8%
-                  </Typography>
-                </Stack>
-              </ListItemSecondaryAction>
-            </ListItemButton>
-            <ListItemButton>
-              <ListItemAvatar>
-                <Avatar sx={{ color: 'error.main', bgcolor: 'error.lighter' }}>
-                  <SettingOutlined />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText primary={<Typography variant="subtitle1">Order #988784</Typography>} secondary="7 hours ago" />
-              <ListItemSecondaryAction>
-                <Stack alignItems="flex-end">
-                  <Typography variant="subtitle1" noWrap>
-                    + $682
-                  </Typography>
-                  <Typography variant="h6" color="secondary" noWrap>
-                    16%
-                  </Typography>
-                </Stack>
-              </ListItemSecondaryAction>
-            </ListItemButton>
-          </List>
-        </MainCard>
-        <MainCard sx={{ mt: 2 }}>
-          <Stack spacing={3}>
-            <Grid container justifyContent="space-between" alignItems="center">
-              <Grid item>
-                <Stack>
-                  <Typography variant="h5" noWrap>
-                    Help & Support Chat
-                  </Typography>
-                  <Typography variant="caption" color="secondary" noWrap>
-                    Typical replay within 5 min
-                  </Typography>
-                </Stack>
-              </Grid>
-              <Grid item>
-                <AvatarGroup sx={{ '& .MuiAvatar-root': { width: 32, height: 32 } }}>
-                  <Avatar alt="Remy Sharp" src={avatar1} />
-                  <Avatar alt="Travis Howard" src={avatar2} />
-                  <Avatar alt="Cindy Baker" src={avatar3} />
-                  <Avatar alt="Agnes Walker" src={avatar4} />
-                </AvatarGroup>
-              </Grid>
-            </Grid>
-            <Button size="small" variant="contained" sx={{ textTransform: 'capitalize' }}>
-              Need Help?
-            </Button>
-          </Stack>
-        </MainCard>
-      </Grid> */}
     </Grid >
+
   );
 }

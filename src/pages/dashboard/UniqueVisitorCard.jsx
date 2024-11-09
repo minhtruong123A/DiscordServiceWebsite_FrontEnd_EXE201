@@ -20,7 +20,7 @@ export default function UniqueVisitorCard() {
     <>
       <Grid container alignItems="center" justifyContent="space-between">
         <Grid item>
-          <Typography variant="h5">Monthly And Weekly Revenue</Typography>
+          <Typography variant="h6">Monthly/ Weekly Revenue</Typography>
         </Grid>
         <Grid item>
           <Stack direction="row" alignItems="center" spacing={0}>
