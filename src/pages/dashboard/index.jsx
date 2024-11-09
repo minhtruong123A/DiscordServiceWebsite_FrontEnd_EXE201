@@ -81,6 +81,28 @@ export default function DashboardDefault() {
   const exchangeRate = 24500;
 
 
+  const getFormattedDate = (paymentDate) => {
+    const transactionDate = new Date(paymentDate);
+    const today = new Date();
+
+    // Check if the date is today
+    if (transactionDate.toDateString() === today.toDateString()) {
+      return `Today, ${transactionDate.getHours() % 12 || 12}:${transactionDate.getMinutes().toString().padStart(2, '0')} ${transactionDate.getHours() >= 12 ? 'PM' : 'AM'} on ${transactionDate.getDate()} ${transactionDate.toLocaleString('default', { month: 'short' })}`;
+    }
+
+    // If not today, format it as a full date and time
+    return transactionDate.toLocaleString('en-US', {
+      weekday: 'long', // "Monday"
+      year: 'numeric', // "2024"
+      month: 'long', // "November"
+      day: 'numeric', // "9"
+      hour: 'numeric', // "4"
+      minute: 'numeric', // "03"
+      second: 'numeric', // "55"
+      hour12: true, // 12-hour time format with AM/PM
+    });
+  };
+
   useEffect(() => {
     const role = localStorage.getItem('role');
     if (role !== '2') {
@@ -275,12 +297,31 @@ export default function DashboardDefault() {
           >
             {transactions.map((transaction) => (
               <ListItemButton divider key={transaction._id}>
+                {/* Avatar and Username in a horizontal layout */}
                 <ListItemAvatar>
-                  <Avatar sx={{ color: 'success.main', bgcolor: 'success.lighter' }}>
+                  <Avatar sx={{ color: 'success.main', bgcolor: 'success.lighter', width: 40, height: 40 }}>
                     <GiftOutlined />
                   </Avatar>
                 </ListItemAvatar>
-                <ListItemText primary={<Typography variant="subtitle1">{`#${transaction.payment_code}`}</Typography>} secondary={`Today, ${new Date(transaction.payment_date).toLocaleTimeString()}`} />
+
+                <Stack direction="column" sx={{ flexGrow: 1, justifyContent: 'center' }}>
+                  {/* Username with larger font and bold */}
+                  <Typography variant="body2" sx={{ fontSize: '1.3rem', fontWeight: 'bold' }}>
+                    {transaction.username}
+                  </Typography>
+
+                  {/* Payment code with larger font and bold */}
+                  <ListItemText
+                    primary={
+                      <Typography variant="subtitle1" sx={{ fontWeight: 'normal', fontSize: '1.1rem' }}>
+                        {`#${transaction.payment_code}`}
+                      </Typography>
+                    }
+                    secondary={<Typography variant="body2">{getFormattedDate(transaction.payment_date)}</Typography>}
+                  />
+                </Stack>
+
+                {/* Transaction amount and USD value */}
                 <ListItemSecondaryAction>
                   <Stack alignItems="flex-end">
                     <Typography variant="subtitle1" noWrap>
@@ -292,6 +333,8 @@ export default function DashboardDefault() {
                   </Stack>
                 </ListItemSecondaryAction>
               </ListItemButton>
+
+
             ))}
           </List>
         </MainCard>
