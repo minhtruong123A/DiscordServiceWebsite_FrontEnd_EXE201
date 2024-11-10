@@ -92,13 +92,13 @@ export default function DashboardDefault() {
 
     // If not today, format it as a full date and time
     return transactionDate.toLocaleString('en-US', {
-      weekday: 'long', // "Monday"
+      weekday: 'short', // "Monday"
       year: 'numeric', // "2024"
-      month: 'long', // "November"
+      month: 'short', // "November"
       day: 'numeric', // "9"
       hour: 'numeric', // "4"
       minute: 'numeric', // "03"
-      second: 'numeric', // "55"
+      // second: 'numeric', // "55"
       hour12: true, // 12-hour time format with AM/PM
     });
   };
