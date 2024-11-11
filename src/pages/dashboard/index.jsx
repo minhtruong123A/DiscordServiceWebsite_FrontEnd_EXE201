@@ -87,18 +87,18 @@ export default function DashboardDefault() {
 
     // Check if the date is today
     if (transactionDate.toDateString() === today.toDateString()) {
-      return `Today, ${transactionDate.getHours() % 12 || 12}:${transactionDate.getMinutes().toString().padStart(2, '0')} ${transactionDate.getHours() >= 12 ? 'PM' : 'AM'} on ${transactionDate.getDate()} ${transactionDate.toLocaleString('default', { month: 'short' })}`;
+      return `Today, ${transactionDate.getHours() % 12 || 12}:${transactionDate.getMinutes().toString().padStart(2, '0')} ${transactionDate.getHours() >= 12 ? 'PM' : 'AM'} on ${transactionDate.getDate()} ${transactionDate.toLocaleString('default', { month: 'long' })}`;
     }
 
     // If not today, format it as a full date and time
     return transactionDate.toLocaleString('en-US', {
-      weekday: 'short', // "Monday"
+      weekday: 'long', // "Monday"
       year: 'numeric', // "2024"
-      month: 'short', // "November"
+      month: 'long', // "November"
       day: 'numeric', // "9"
       hour: 'numeric', // "4"
       minute: 'numeric', // "03"
-      // second: 'numeric', // "55"
+      second: 'numeric', // "55"
       hour12: true, // 12-hour time format with AM/PM
     });
   };
@@ -237,7 +237,7 @@ export default function DashboardDefault() {
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={2}>
         {/* <AnalyticEcommerce title="Total Sales" count="$35,078" percentage={27.4} isLoss color="warning" extra="$20,395" /> */}
-        <AnalyticEcommerce title="Total Sales" count={`$${totalInUSD}`} extra="$25" />
+        <AnalyticEcommerce title="Total Sales" count={<span style={{ color: 'green', fontWeight: 500 }}>{`$${totalInUSD}`}</span>} extra="$25" />
       </Grid>
 
       <Grid item md={8} sx={{ display: { sm: 'none', md: 'block', lg: 'none' } }} />
@@ -251,15 +251,49 @@ export default function DashboardDefault() {
       <Grid item xs={12} md={12} lg={12}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
-            {/* <Typography variant="h5">Recent Orders</Typography> */}
             <Typography variant="h5">Accounts Summary</Typography>
           </Grid>
           <Grid item />
         </Grid>
-        <MainCard sx={{ mt: 2 }} content={false}>
-          <OrdersTable />
-        </MainCard>
+        <Grid
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <MainCard sx={{ mt: 2, width: '92%' }} content={false}>
+            <Box sx={{ maxHeight: '400px', overflow: 'auto', width: '100%' }}>
+              {/* Custom scrollbar styles */}
+              <style>
+                {`
+            .scrollable-container::-webkit-scrollbar {
+              width: 10px;
+            }
+            .scrollable-container::-webkit-scrollbar-track {
+              background-color: # ;
+              border-radius: 5px;
+            }
+            .scrollable-container::-webkit-scrollbar-thumb {
+              background-color: rgba(100, 100, 100, 0.3);
+              border-radius: 5px;
+              transition: background-color 0.3s ease;
+            }
+            .scrollable-container::-webkit-scrollbar-thumb:hover {
+              background-color: rgba(100, 100, 100, 0.6);
+            }
+          `}
+              </style>
+              <Box className="scrollable-container">
+                <OrdersTable />
+              </Box>
+            </Box>
+          </MainCard>
+        </Grid>
       </Grid>
+
+
 
       {/* them hang */}
       <Grid item xs={12} sx={{ mb: -2.25 }}>
@@ -267,77 +301,102 @@ export default function DashboardDefault() {
       </Grid>
 
       {/* row 2 */}
-      <Grid item xs={12} md={4} lg={4}>
+      {/* <Grid item xs={12} md={4} lg={4}>
         <UniqueVisitorCard />
-      </Grid>
+      </Grid> */}
 
       {/* them hang */}
-      <Grid item xs={12} md={4} lg={4}>
+      {/* <Grid item xs={12} md={4} lg={4}>
         <SaleReportCard />
-      </Grid>
+      </Grid> */}
 
-      <Grid item xs={12} md={4} lg={4}>
+      <Grid item xs={12} md={12} lg={12}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
             <Typography variant="h5">Transaction History</Typography>
           </Grid>
         </Grid>
         <MainCard sx={{ mt: 2 }} content={false}>
-          <List
-            component="nav"
-            sx={{
-              px: 0,
-              py: 0,
-              '& .MuiListItemButton-root': {
-                py: 1.5,
-                '& .MuiAvatar-root': { /* your avatar style */ },
-                '& .MuiListItemSecondaryAction-root': { /* your action style */ }
-              }
-            }}
-          >
-            {transactions.map((transaction) => (
-              <ListItemButton divider key={transaction._id}>
-                {/* Avatar and Username in a horizontal layout */}
-                <ListItemAvatar>
-                  <Avatar sx={{ color: 'success.main', bgcolor: 'success.lighter', width: 40, height: 40 }}>
-                    <GiftOutlined />
-                  </Avatar>
-                </ListItemAvatar>
+          <Box sx={{ maxHeight: '600px', overflow: 'auto', width: '100%' }}>
+            <style>
+              {`
+        .scrollable-list::-webkit-scrollbar {
+          width: 8px;
+        }
+        .scrollable-list::-webkit-scrollbar-track {
+          background-color: #f1f1f1;
+          border-radius: 5px;
+        }
+        .scrollable-list::-webkit-scrollbar-thumb {
+          background-color: rgba(100, 100, 100, 0.3);
+          border-radius: 5px;
+          transition: background-color 0.3s ease;
+        }
+        .scrollable-list::-webkit-scrollbar-thumb:hover {
+          background-color: rgba(100, 100, 100, 0.6);
+        }
+      `}
+            </style>
+            <List
+              className="scrollable-list"
+              component="nav"
+              sx={{
+                px: 0,
+                py: 0,
+                '& .MuiListItemButton-root': {
+                  py: 1.5,
+                  '& .MuiAvatar-root': { /* avatar style here */ },
+                  '& .MuiListItemSecondaryAction-root': { /* action style here */ },
+                },
+              }}
+            >
+              {transactions.map((transaction) => (
+                <ListItemButton divider key={transaction._id}>
+                  {/* Avatar and Username layout */}
+                  <ListItemAvatar>
+                    <Avatar sx={{ color: 'success.main', bgcolor: 'success.lighter', width: 40, height: 40 }}>
+                      <GiftOutlined />
+                    </Avatar>
+                  </ListItemAvatar>
 
-                <Stack direction="column" sx={{ flexGrow: 1, justifyContent: 'center' }}>
-                  {/* Username with larger font and bold */}
-                  <Typography variant="body2" sx={{ fontSize: '1.3rem', fontWeight: 'bold' }}>
-                    {transaction.username}
-                  </Typography>
-
-                  {/* Payment code with larger font and bold */}
-                  <ListItemText
-                    primary={
-                      <Typography variant="subtitle1" sx={{ fontWeight: 'normal', fontSize: '1.1rem' }}>
-                        {`#${transaction.payment_code}`}
-                      </Typography>
-                    }
-                    secondary={<Typography variant="body2">{getFormattedDate(transaction.payment_date)}</Typography>}
-                  />
-                </Stack>
-
-                {/* Transaction amount and USD value */}
-                <ListItemSecondaryAction>
-                  <Stack alignItems="flex-end">
-                    <Typography variant="subtitle1" noWrap>
-                      + {transaction.payment_ammount}VND
+                  <Stack direction="column" sx={{ flexGrow: 1, justifyContent: 'center' }}>
+                    {/* Username with larger font and bold */}
+                    <Typography variant="body2" sx={{ fontSize: '1.6rem', fontWeight: 'bold' }}>
+                      {transaction.username}
                     </Typography>
-                    <Typography variant="h6" color="secondary" noWrap>
-                      {`$${(transaction.payment_ammount / exchangeRate).toFixed(2)}`} USD
-                    </Typography>
+
+                    {/* Payment code */}
+                    <ListItemText
+                      primary={
+                        <Typography variant="subtitle1" sx={{ fontSize: '1.1rem', color: 'blue', fontWeight: 'bold' }}>
+                          {`#${transaction.payment_code}`}
+                        </Typography>
+                      }
+                      secondary={
+                        <Typography variant="body2">
+                          {getFormattedDate(transaction.payment_date)}
+                        </Typography>
+                      }
+                    />
                   </Stack>
-                </ListItemSecondaryAction>
-              </ListItemButton>
 
-
-            ))}
-          </List>
+                  {/* Transaction amount and USD value */}
+                  <ListItemSecondaryAction>
+                    <Stack alignItems="flex-end">
+                      <Typography variant="subtitle1" noWrap>
+                        + {transaction.payment_ammount} VND
+                      </Typography>
+                      <Typography variant="h6" noWrap sx={{ color: 'green', fontWeight: 'bold' }}>
+                        {`$${(transaction.payment_ammount / exchangeRate).toFixed(2)} USD`}
+                      </Typography>
+                    </Stack>
+                  </ListItemSecondaryAction>
+                </ListItemButton>
+              ))}
+            </List>
+          </Box>
         </MainCard>
+
 
         <MainCard sx={{ mt: 2 }}>
           <Stack spacing={3}>
