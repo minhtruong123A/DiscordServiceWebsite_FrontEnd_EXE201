@@ -78,6 +78,10 @@ export default function DashboardDefault() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [totalAmount, setTotalAmount] = useState(0);
+  const [premiumUserGrowth, setPremiumUserGrowth] = useState(0);
+  const [percentagePremiumGrowth, setPercentagePremiumGrowth] = useState(0);
+  const [revenueGrowth, setRevenueGrowth] = useState(0);
+  const [expensesRatio, setExpensesRatio] = useState(0);
   const exchangeRate = 24550;
 
 
@@ -177,14 +181,93 @@ export default function DashboardDefault() {
         const data = await response.json();
 
         if (data.success) {
-          setTransactions(data.data[0]);
-          const total = data.data[0].reduce((acc, transaction) => acc + transaction.payment_ammount, 0);
+          const transactions = data.data[0];
+
+          const getWeekNumber = (date) => {
+            const d = new Date(date);
+            const startDate = new Date(d.getFullYear(), 0, 1);
+            const days = Math.floor((d - startDate) / (24 * 60 * 60 * 1000));
+            return Math.floor((days - d.getDay() + 7) / 7);
+          };
+
+          const weeklyData = transactions.reduce((acc, transaction) => {
+            const weekNumber = getWeekNumber(transaction.payment_date);
+            const username = transaction.username;
+
+            if (typeof transaction.payment_ammount !== 'number') {
+              console.warn('Invalid payment_ammount:', transaction.payment_ammount);
+              return acc; // Bỏ qua giao dịch không hợp lệ
+            }
+
+
+            if (!acc[weekNumber]) {
+              acc[weekNumber] = { totalAmount: 0, totalExpenses: 0, premiumUsers: new Set() }; // Khởi tạo premiumUsers là Set
+            }
+
+            acc[weekNumber].totalAmount += transaction.payment_ammount;
+
+            if (transaction.payment_ammount < 0) { // Giả sử chi phí có giá trị âm
+              acc[weekNumber].totalExpenses += Math.abs(transaction.payment_ammount);
+            }
+
+            // Thêm username vào Set premiumUsers để đếm số lượng người dùng duy nhất
+            if (username) {
+              acc[weekNumber].premiumUsers.add(username);
+            } else {
+              console.warn('Invalid username:', username);
+            }
+            return acc;
+          }, {});
+
+          console.log('weeklyData' + weeklyData);
+
+
+          const weekNumbers = Object.keys(weeklyData);
+          let revenueGrowth = 0;
+          let growth = 0;
+          let expensesRatio = 0;
+
+
+          if (weekNumbers.length > 1) {
+            const lastWeek = weekNumbers[weekNumbers.length - 1];
+            const previousWeek = weekNumbers[weekNumbers.length - 2];
+
+            const currentRevenue = weeklyData[lastWeek].totalAmount;
+            console.log('currentRevenue' + currentRevenue)
+            const previousRevenue = weeklyData[previousWeek].totalAmount;
+            console.log('previousRevenue' + previousRevenue)
+
+            revenueGrowth = ((currentRevenue - previousRevenue) / previousRevenue) * 100;
+
+
+            const lastWeekCount = weeklyData[lastWeek].premiumUsers.size;
+            const previousWeekCount = weeklyData[previousWeek].premiumUsers.size;
+
+            const currentExpenses = weeklyData[lastWeek].totalExpenses;
+            console.log('currentExpenses' + currentExpenses);
+            const currentRevenueForExpenses = weeklyData[lastWeek].totalAmount;
+            console.log('currentRevenueForExpenses' + currentRevenueForExpenses);
+            expensesRatio = (383228 / currentRevenueForExpenses) * 100;
+            console.log('expensesRatio' + expensesRatio);
+
+            console.log('lastWeekCount' + lastWeekCount);
+            console.log('previousWeekCount' + previousWeekCount);
+            growth = ((lastWeekCount - previousWeekCount) / previousWeekCount) * 100;
+          }
+
+          setTransactions(transactions);
+          const total = transactions.reduce((acc, transaction) => acc + transaction.payment_ammount, 0);
           setTotalAmount(total);
+          setPremiumUserGrowth(growth);
+          console.log('transaction length' + transactions.length)
+          setPercentagePremiumGrowth((growth / transactions.length) * 100);
+          setRevenueGrowth(revenueGrowth);
+          setExpensesRatio(expensesRatio);
         } else {
           setError('Failed to fetch data');
         }
       } catch (err) {
-        setError('Error fetching transactions');
+        setError('Error fetching transactions' + err);
       } finally {
         setLoading(false);
       }
@@ -438,7 +521,7 @@ export default function DashboardDefault() {
       </Grid>
 
 
-      <Grid item xs={12} md={4} lg={4}>
+      <Grid item xs={12} md={6} lg={6}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
             {/* <Typography variant="h5">Analytics Report</Typography> */}
@@ -451,28 +534,28 @@ export default function DashboardDefault() {
             <ListItemButton divider>
               <ListItemText primary="Premium User Growth" />
               {/* <Typography variant="h5">+45.14%</Typography> */}
-              <Typography variant="h5">{`+${percentagePremiumUsers.toFixed(2)}%`}</Typography>
+              <Typography variant="h5">+{premiumUserGrowth.toFixed(2)}%</Typography>
             </ListItemButton>
             <ListItemButton divider>
               <ListItemText primary="Percentage Premium Growth" />
               {/* <Typography variant="h5">0.58%</Typography> */}
-              <Typography variant="h5">{`${((analyticsData.total_user - prevAnalyticsData.total_user) / (prevAnalyticsData.total_user || 1) * 100).toFixed(2)}%`}</Typography>
+              <Typography variant="h5">{(percentagePremiumGrowth > 0 ? percentagePremiumGrowth.toFixed(2) : 0)}%</Typography>
             </ListItemButton>
             <ListItemButton>
               <ListItemText primary="Business Risk Cases" />
               {/* <Typography variant="h5">Low</Typography> */}
-              <Typography variant="h5">Low</Typography>
+              <Typography variant="h5">{(premiumUserGrowth > 0 ? 'Low' : 'High')}</Typography>
             </ListItemButton>
           </List>
-          <ReportAreaChart2 />
+          {/* <ReportAreaChart2 /> */}
         </MainCard>
       </Grid>
 
       {/* them hang */}
-      <Grid item xs={12} md={4} lg={4}>
+      {/* <Grid item xs={12} md={4} lg={4}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
-            {/* <Typography variant="h5">Analytics Report</Typography> */}
+            {/* <Typography variant="h5">Analytics Report</Typography>
             <Typography variant="h5">Total Users Growth Comparison</Typography>
           </Grid>
           <Grid item />
@@ -481,26 +564,26 @@ export default function DashboardDefault() {
           <List sx={{ p: 0, '& .MuiListItemButton-root': { py: 2 } }}>
             <ListItemButton divider>
               <ListItemText primary="Total User Growth" />
-              {/* <Typography variant="h5">+45.14%</Typography> */}
-              <Typography variant="h5">{`+${percentageActiveUsers.toFixed(2)}%`}</Typography>
+              {/* <Typography variant="h5">+45.14%</Typography>
+              <Typography variant="h5">+0.00%</Typography>
             </ListItemButton>
             <ListItemButton divider>
               <ListItemText primary="Percentage User Growth" />
-              {/* <Typography variant="h5">0.58%</Typography> */}
-              <Typography variant="h5">{`${((analyticsData.active_user - prevAnalyticsData.active_user) / (prevAnalyticsData.active_user || 1) * 100).toFixed(2)}%`}</Typography>
+              {/* <Typography variant="h5">0.58%</Typography>
+              <Typography variant="h5">0.00%</Typography>
             </ListItemButton>
             <ListItemButton>
               <ListItemText primary="Business Risk Cases" />
-              {/* <Typography variant="h5">Low</Typography> */}
+              {/* <Typography variant="h5">Low</Typography>
               <Typography variant="h5">Low</Typography>
             </ListItemButton>
           </List>
-          <ReportAreaChart3 />
+          {/* <ReportAreaChart3 />
         </MainCard>
-      </Grid>
+      </Grid> */}
 
       {/* them hang */}
-      <Grid item xs={12} md={4} lg={4}>
+      <Grid item xs={12} md={6} lg={6}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
             {/* <Typography variant="h5">Analytics Report</Typography> */}
@@ -513,22 +596,25 @@ export default function DashboardDefault() {
             <ListItemButton divider>
               <ListItemText primary="Team Finance Growth" />
               {/* <Typography variant="h5">+45.14%</Typography> */}
-              <Typography variant="h5">+0.00%</Typography>
+              <Typography variant="h5">+{revenueGrowth.toFixed(2)}%</Typography>
             </ListItemButton>
             <ListItemButton divider>
               <ListItemText primary="Team Expenses Ratio" />
               {/* <Typography variant="h5">0.58%</Typography> */}
-              <Typography variant="h5">0.00%</Typography>
+              <Typography variant="h5">{expensesRatio.toFixed(2)}%</Typography>
             </ListItemButton>
             <ListItemButton>
               <ListItemText primary="Business Risk Cases" />
               {/* <Typography variant="h5">Low</Typography> */}
-              <Typography variant="h5">Low</Typography>
+              <Typography variant="h5">{(revenueGrowth > 0 ? 'Low' : 'High')}</Typography>
             </ListItemButton>
           </List>
-          <ReportAreaChart />
+          {/* <ReportAreaChart /> */}
         </MainCard>
       </Grid>
+
+      <Grid item md={12} sx={{ display: { sm: 'block', md: 'block', lg: 'block' } }} />
+      <Grid item md={12} sx={{ display: { sm: 'block', md: 'block', lg: 'block' } }} />
 
 
       {/* <Grid item xs={12} md={5} lg={4}>
