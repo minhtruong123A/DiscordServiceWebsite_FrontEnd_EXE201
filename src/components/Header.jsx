@@ -38,14 +38,26 @@ const Header = ({ className = "" }) => {
             'Authorization': `Bearer ${token}`
           }
         });
+
+        // localStorage.removeItem("access_token");
+        // localStorage.removeItem("refresh_token");
+        // localStorage.removeItem("username");
+        // localStorage.removeItem("role");
+        // localStorage.removeItem("password");
+
+        if (response.status === 401) {
+          return;
+        }
+
         if (response.data.success) {
           const total = response.data.data[0].reduce((sum, item) => sum + item.payment_ammount, 0);
           setTotalPayment(total);
         }
       } catch (error) {
         console.error("Error fetching payment data:", error);
-        alert("Failed to fetch payment data. Please log in again.");
-        navigate("/login");
+        // alert("Failed to fetch payment data. Please log in again.");
+        localStorage.clear();
+        setIsLoggedIn(false);
       }
     };
 

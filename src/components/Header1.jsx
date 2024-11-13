@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Component4 from "./Component4";
 import PropTypes from "prop-types";
@@ -20,6 +20,14 @@ const Header1 = ({ className = "" }) => {
     localStorage.removeItem("role");
     setUsername(null); // Update state
     navigate("/login");
+  }, [navigate]);
+
+  useEffect(() => {
+    const role = localStorage.getItem("role");
+    if (role === "2") {
+      localStorage.clear();
+      setUsername(null);
+    }
   }, [navigate]);
 
   return (
@@ -44,33 +52,33 @@ const Header1 = ({ className = "" }) => {
           </div>
         </div>
         <div className="login-component1">
-        {isLoggedIn ? (
-              <div className="welcome-message">
-                <Button
-                  className="logout-button"
-                  disableElevation
-                  variant="contained"
-                  sx={{
-                    textTransform: "none",
-                    color: "#fff",
-                    fontSize: "20px; width: 100%;",
-                    fontWeight: "bold",
-                    background: "#3abef9",
-                    borderRadius: "10px",
-                    "&:hover": { background: "#3abef9" },
-                    height: 49,
-                  }}
-                  onClick={handleLogout}
-                >
-                  Logout
-                </Button>
-                {/* <br></br>
+          {isLoggedIn ? (
+            <div className="welcome-message">
+              <Button
+                className="logout-button"
+                disableElevation
+                variant="contained"
+                sx={{
+                  textTransform: "none",
+                  color: "#fff",
+                  fontSize: "20px; width: 100%;",
+                  fontWeight: "bold",
+                  background: "#3abef9",
+                  borderRadius: "10px",
+                  "&:hover": { background: "#3abef9" },
+                  height: 49,
+                }}
+                onClick={handleLogout}
+              >
+                Logout
+              </Button>
+              {/* <br></br>
                 <span className="welcome-user">Welcome, {username}</span> */}
-              </div>
-              
-            ) : (
-              <Component4 />
-            )}
+            </div>
+
+          ) : (
+            <Component4 />
+          )}
         </div>
       </div>
       <div className="separator" />
