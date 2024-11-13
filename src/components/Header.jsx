@@ -28,8 +28,6 @@ const Header = ({ className = "" }) => {
     const fetchPayments = async () => {
       const token = localStorage.getItem("access_token");
       if (!token) {
-        alert("Session expired. Please log in again.");
-        navigate("/login");
         return;
       }
 
