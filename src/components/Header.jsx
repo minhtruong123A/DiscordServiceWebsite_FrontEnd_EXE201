@@ -12,6 +12,8 @@ const Header = ({ className = "" }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [totalPayment, setTotalPayment] = useState(0);
+
 
   useEffect(() => {
     const storedUsername = localStorage.getItem("username");
@@ -21,11 +23,42 @@ const Header = ({ className = "" }) => {
       setIsLoggedIn(true);
       setUsername(storedUsername);
     }
+
+
+    const fetchPayments = async () => {
+      const token = localStorage.getItem("access_token");
+      if (!token) {
+        alert("Session expired. Please log in again.");
+        navigate("/login");
+        return;
+      }
+
+      try {
+        const response = await axios.get('https://exe202backend-ppn5.onrender.com/api/account/payment', {
+          headers: {
+            'accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        if (response.data.success) {
+          const total = response.data.data[0].reduce((sum, item) => sum + item.payment_ammount, 0);
+          setTotalPayment(total);
+        }
+      } catch (error) {
+        console.error("Error fetching payment data:", error);
+        alert("Failed to fetch payment data. Please log in again.");
+        navigate("/login");
+      }
+    };
+
+    fetchPayments();
+
+
     const intervalId = setInterval(() => {
       const access_token = localStorage.getItem("access_token");
       const refresh_token = localStorage.getItem("refresh_token");
       if (refresh_token && storedUsername && storedPassword) {
-        axios.post("http://localhost:8000/api/account/login", {
+        axios.post("https://localhost:8000/api/account/login", {
           username: storedUsername,
           password: storedPassword,
         })
@@ -85,12 +118,15 @@ const Header = ({ className = "" }) => {
             {isLoggedIn ? (
               <div className="welcome-message">
                 <div className="logo" onClick={() => setDropdownOpen(!dropdownOpen)}>
-                  <img
-                    className="avatar-icon"
-                    loading="lazy"
-                    alt=""
-                    src="/avatar@2x.png"
-                  />
+                  <div className="avatar-container">
+                    <img
+                      className="avatar-icon"
+                      loading="lazy"
+                      alt=""
+                      src="/avatar@2x.png"
+                    />
+                    <span className="payment-amount">{totalPayment} VND</span>
+                  </div>
                   {dropdownOpen && (
                     <div className="dropdown-menu">
                       <div className="dropdown-item" onClick={onLogoClick}>

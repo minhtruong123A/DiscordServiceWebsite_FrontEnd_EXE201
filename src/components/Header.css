@@ -37,6 +37,19 @@
   max-width: 100%;
 }
 
+.avatar-container {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+}
+
+.payment-amount {
+  margin-left: 20px;
+  color: #FFD700;
+  font-weight: bold;
+  font-size: 18px;
+}
+
 .left-header {
   flex-direction: row;
   gap: var(--gap-2xs);
