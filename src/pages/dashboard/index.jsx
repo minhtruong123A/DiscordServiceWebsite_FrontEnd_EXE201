@@ -78,7 +78,7 @@ export default function DashboardDefault() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [totalAmount, setTotalAmount] = useState(0);
-  const exchangeRate = 24500;
+  const exchangeRate = 24550;
 
 
   const getFormattedDate = (paymentDate) => {
