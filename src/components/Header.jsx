@@ -64,32 +64,32 @@ const Header = ({ className = "" }) => {
     fetchPayments();
 
 
-    const intervalId = setInterval(() => {
-      const access_token = localStorage.getItem("access_token");
-      const refresh_token = localStorage.getItem("refresh_token");
-      if (refresh_token && storedUsername && storedPassword) {
-        axios.post("https://localhost:8000/api/account/login", {
-          username: storedUsername,
-          password: storedPassword,
-        })
-          .then(response => {
-            const { access_token, refresh_token } = response.data;
-            localStorage.setItem("access_token", access_token);
-            localStorage.setItem("refresh_token", refresh_token);
-          })
-          .catch(() => {
-            alert("Session expired. Please log in again.");
-            localStorage.removeItem("access_token");
-            localStorage.removeItem("refresh_token");
-            localStorage.removeItem("username");
-            localStorage.removeItem("role");
-            localStorage.removeItem("password");
-            setIsLoggedIn(false);
-            navigate("/login");
-          });
-      }
-    }, 30 * 60 * 1000); // 30 minutes
-    return () => clearInterval(intervalId);
+    // const intervalId = setInterval(() => {
+    //   const access_token = localStorage.getItem("access_token");
+    //   const refresh_token = localStorage.getItem("refresh_token");
+    //   if (refresh_token && storedUsername && storedPassword) {
+    //     axios.post("https://localhost:8000/api/account/login", {
+    //       username: storedUsername,
+    //       password: storedPassword,
+    //     })
+    //       .then(response => {
+    //         const { access_token, refresh_token } = response.data;
+    //         localStorage.setItem("access_token", access_token);
+    //         localStorage.setItem("refresh_token", refresh_token);
+    //       })
+    //       .catch(() => {
+    //         alert("Session expired. Please log in again.");
+    //         localStorage.removeItem("access_token");
+    //         localStorage.removeItem("refresh_token");
+    //         localStorage.removeItem("username");
+    //         localStorage.removeItem("role");
+    //         localStorage.removeItem("password");
+    //         setIsLoggedIn(false);
+    //         navigate("/login");
+    //       });
+    //   }
+    // }, 30 * 60 * 1000); // 30 minutes
+    // return () => clearInterval(intervalId);
   }, [navigate]);
 
   const handleLogout = () => {
